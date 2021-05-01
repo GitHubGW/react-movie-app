@@ -1,0 +1,61 @@
+.movies {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 50px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  width: 85%;
+}
+.movies .movie {
+  width: 48%;
+  height: 310px;
+  background-color: white;
+  margin-bottom: 50px;
+  display: flex;
+  font-weight: 300;
+  padding: 20px;
+  border-radius: 10px;
+  color: #adaeb9;
+  box-shadow: 0 13px 27px 0 rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.movies .movie:hover{
+  transform: scale(1.03);
+}
+.movie img {
+  position: relative;
+  max-width: 180px;
+  width: 100%;
+  margin-right: 30px;
+  border-radius: 10px;
+  box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+    0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+}
+.movie__data{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.movie .movie__title {
+  margin: 0px;
+  font-size: 32px;
+  color: black;
+  font-weight: bold;
+}
+.movie .movie__genres {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  margin-top: 15px;
+}
+.movie .movie__genres li{
+  color: #adaeb9;
+  font-weight: 300; 
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+}
