@@ -7,7 +7,6 @@ html,
 body{
   display: flex;
   justify-content: center;
-  background-color: #eee;
 }
 .container h1{
   text-align: center;

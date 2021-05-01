@@ -1,105 +1,34 @@
 import React from "react";
-import axios from "axios";
-import Movie from "./Movie";
-import "./App.css";
-import "./Movie.css";
+// react-router-dom을 이용하면 라우터를 이용할 수 있다.
+// react-router-dom에는 많은 종류의 라우터들이 있는데 그중 우리는 HashRouter(해쉬 라우터)를 사용한다.
+// BrowserRouter로 해도 상관은 없지만 깃허브에 업로드할 때 조금 번거로워서 현재 여기서는 HashRouter로 한 것임
+import { HashRouter, BrowserRouter, Route } from "react-router-dom";
 
-// 영화 API 주소: https://yts.mx/api#movie_details
-// API를 가져올 주소를 설정해준다.
-// 주소 가장 맨 끝에 Endpoint Parameters를 추가해서 그 파라미터에 따른 Json데이터를 가져올 수 있다.
-// 예를들어 json뒤에 ?sort_by=rating를 썼는데 이것은 rating(평점) 순으로 정렬하려고 써준 것이다.
-// rating대신 year나 다른 것들을 쓰면 그 속성에 따른 정렬 방식으로 json데이터를 기져오는 것이다.
-const URL = "https://yts-proxy.nomadcoders1.now.sh/list_movies.json?sort_by=genres";
+import Home from "./routes/Home";
+import About from "./routes/About";
+import movieDetail from "./routes/movieDetail";
+// import Navigation from "./components/Navigation";
 
-class App extends React.Component {
-  constructor() {
-    // console.log("constructor");
-    super();
-  }
+// 함수형 컴포넌트 App을 생성함
+function App() {
+  return (
+    // App은 HashRouter(해쉬 라우터)를 리턴한다. 그리고 HashRouter안에는 Route(라우트)가 있다. (라우터안에 라우트들이 있는 형태이다.)
+    // 라우트에는 라우트 경로로 갔을 때 보여줄 컴포넌트들을 지정해주면 된다.
+    <HashRouter>
+      {/* Navigation컴포넌트를 만들고 안에 라우트들간의 이동을 할 수 있는 Link를 만든다. */}
+      {/* 주의할 점은 Link는 라우터 밖에서 쓸 수 없다. Link는 라우터 안에 있어야 한다. */}
+      {/* (Navigation이 Link를 가지고 있기 때문에 여기서는 HashRouter밖으로 이동하면 사용 불가능하다는 의미이다.) */}
+      {/* <Navigation></Navigation> */}
 
-  state = {
-    isLoading: true,
-    movies: [],
-  };
-
-  // componentDidMount는 랜더가 끝난 후에 실행한다.
-  // componentDidMount안에 setTimeout을 이용해 일정 시간후에 state의 값을 바뀌도록 컨트롤 했다.
-  // 주의할 점은 setState()는 constructor()에서는 사용하면 에러가 난다.
-  // 왜냐하면 setState()는 마운트가 끝난 후(=컴포넌트가 생성된 후) 컨트롤이 가능하기 떄문이다.
-  async componentDidMount() {
-    // console.log("componentDidMount");
-    // setTimeout(() => {
-    //   this.setState({isLoading: false})
-    // }, 2000);
-
-    // axios를 이용해 GET방식으로 URL변수를 가진 주소로 API를 요청한다.
-    // axios는 async await를 통해 동기 처리를 한 번 해줘야 한다.
-    const response = await axios.get(URL);
-
-    // axios에서 받은 정보를 데이터를 이용해서 movies배열을 가져왔다.
-    const {
-      data: {
-        data: { movies },
-      },
-    } = response;
-    // console.log(movies);
-
-    this.setState({ movies: movies, isLoading: false });
-  }
-
-  render() {
-    // console.log("render");
-
-    // this.state에서 isLoading과 movies를 뽑아온다.
-    const { isLoading, movies } = this.state;
-
-    // map()메서드를 돌릴 mapMovie함수를 생성함
-    // map()메서드를 이용해서 Movie컴포넌트에 데이터를 넘겨줌 (map()메서드를 쓸 때 return은 필수임)                                                                                                                                                                                                                                                                                                                                                                                                                                   ................................................................//////////////////////////.........................................................................................................................................................................................................................................
-    function mapMovie(movies) {
-      // console.log("movies", movies);
-      // return console.log("✅movies", movies.title);
-      return <Movie key={movies.id} id={movies.id} title={movies.title} summary={movies.summary} year={movies.year} rating={movies.rating} poster={movies.medium_cover_image} genres={movies.genres} />;
-    }
-
-    return (
-      <section className="container">
-        {isLoading === false ? <h1>🎬 Movie App 🎬</h1> : <h1></h1>}
-        {/* <h1>App</h1> */}
-        {/* {}안에는 자바스크립트를 쓸 수 있고 자바스크립트의 삼항연산자를 이용해 조건문을 만들어줬다.  */}
-        {/* isLoading이 true인지 false인지 검사해서 true면 "Loading.."을 false면 movies에 map()메서드를 돌린 결과를 가져온다. */}
-        {/* Loading 텍스트 대신에 아래와 같이 html태그들을 ()로 묶어서 사용할 수 있다.  */}
-        {/* <h2>{isLoading ? "Loading..." : "We are ready"}</h2> */}
-        {isLoading ? (
-          <div className="loading-bar">
-            <span></span>
-            <span></span>
-            <span></span>
-            <h2>Loading. . .</h2>
-          </div>
-        ) : (
-          <div className="movies">{movies.map(mapMovie)}</div>
-        )}
-        {isLoading === false ? (
-          <footer className="footer">
-            <div className="footer__icon__container">
-              <div className="footer__icon">
-                <img src="https://d1telmomo28umc.cloudfront.net/media/public/badges/react_nsNvyE0.png" alt="react"></img>
-              </div>
-              <div className="footer__icon">
-                <img src="https://d1telmomo28umc.cloudfront.net/media/public/badges/js.png" alt="js"></img>
-              </div>
-              <div className="footer__icon">
-                <img src="https://d1telmomo28umc.cloudfront.net/media/public/badges/es6.png" alt="es6"></img>
-              </div>
-            </div>
-            <span className="footer__text">&copy; {new Date().getFullYear()} GW. All rights reserved.</span>
-          </footer>
-        ) : (
-          <footer></footer>
-        )}
-      </section>
-    );
-  }
+      {/* Route에 몇몇 props(여기서는 속성)를 지정해줄 수 있다. */}
+      {/* Route의 path속성에는 라우트의 경로를 지정해주고 component에는 해당 라우트의 경로로 갔을 때 보여줄 컴포넌트를 지정해준다. */}
+      {/* Route를 통해 / 경로로 들어갔을 때 Home컴포넌트를 보여주고 /about 경로로 들어갔을 때 About컴포넌트를 보여줄 수 있다. */}
+      {/* exact속성을 줘야 정확하게 경로가 path 값과 동일할 때만 해당 컴포넌트를 보여준다. */}
+      <Route path="/" exact={true} component={Home}></Route>
+      <Route path="/about" component={About}></Route>
+      <Route paht="/movie/:id" component={movieDetail}></Route>
+    </HashRouter>
+  );
 }
 
 export default App;

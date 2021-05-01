@@ -8,6 +8,10 @@
   padding-bottom: 10px;
   width: 100%;
 }
+.movies a{
+  display: contents;
+  text-decoration: none;
+}
 .movies .movie {
   width: 23.5%;
   height: 260px;
