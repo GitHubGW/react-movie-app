@@ -4,10 +4,14 @@
   font-family: 'Tinos', serif;
 }
 html,
-body,
-.container {
+body{
   display: flex;
   justify-content: center;
+  background-color: #eee;
+}
+.container h1{
+  text-align: center;
+  font-size: 30px;
 }
 .loading-bar {
   position: absolute;
@@ -40,6 +44,39 @@ body,
 .loading-bar h2 {
   margin: 0;
   font-size: 30px;
+}
+.footer {
+  border-top: 1px solid #ddd;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+.footer__icon__container {
+  display: flex;
+  margin-bottom: 10px;
+}
+.footer__icon {
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.2s ease-in-out;
+}
+.footer__icon:hover{
+  transform: scale(1.15);
+}
+.footer__icon:last-child{
+  margin-right: 0;
+}
+.footer__icon img{
+  width: 45px;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.footer__text {
+  font-size: 16px;
+  color: #444444;
+  font-weight: bold;
 }
 
 @keyframes loading-bar {

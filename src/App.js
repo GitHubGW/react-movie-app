@@ -9,7 +9,7 @@ import "./Movie.css";
 // 주소 가장 맨 끝에 Endpoint Parameters를 추가해서 그 파라미터에 따른 Json데이터를 가져올 수 있다.
 // 예를들어 json뒤에 ?sort_by=rating를 썼는데 이것은 rating(평점) 순으로 정렬하려고 써준 것이다.
 // rating대신 year나 다른 것들을 쓰면 그 속성에 따른 정렬 방식으로 json데이터를 기져오는 것이다.
-const URL = "https://yts-proxy.nomadcoders1.now.sh/list_movies.json?sort_by=year";
+const URL = "https://yts-proxy.nomadcoders1.now.sh/list_movies.json?sort_by=genres";
 
 class App extends React.Component {
   constructor() {
@@ -63,13 +63,14 @@ class App extends React.Component {
 
     return (
       <section className="container">
+        {isLoading === false ? <h1>🎬 Movie App 🎬</h1> : <h1></h1>}
         {/* <h1>App</h1> */}
         {/* {}안에는 자바스크립트를 쓸 수 있고 자바스크립트의 삼항연산자를 이용해 조건문을 만들어줬다.  */}
         {/* isLoading이 true인지 false인지 검사해서 true면 "Loading.."을 false면 movies에 map()메서드를 돌린 결과를 가져온다. */}
         {/* Loading 텍스트 대신에 아래와 같이 html태그들을 ()로 묶어서 사용할 수 있다.  */}
         {/* <h2>{isLoading ? "Loading..." : "We are ready"}</h2> */}
         {isLoading ? (
-          <div class="loading-bar">
+          <div className="loading-bar">
             <span></span>
             <span></span>
             <span></span>
@@ -78,8 +79,24 @@ class App extends React.Component {
         ) : (
           <div className="movies">{movies.map(mapMovie)}</div>
         )}
-
-        {/* <Movie title={movies.title} summary={movies.summary} year={movies.title} rating={movies.title} /> */}
+        {isLoading === false ? (
+          <footer className="footer">
+            <div className="footer__icon__container">
+              <div className="footer__icon">
+                <img src="https://d1telmomo28umc.cloudfront.net/media/public/badges/react_nsNvyE0.png" alt="react"></img>
+              </div>
+              <div className="footer__icon">
+                <img src="https://d1telmomo28umc.cloudfront.net/media/public/badges/js.png" alt="js"></img>
+              </div>
+              <div className="footer__icon">
+                <img src="https://d1telmomo28umc.cloudfront.net/media/public/badges/es6.png" alt="es6"></img>
+              </div>
+            </div>
+            <span className="footer__text">&copy; {new Date().getFullYear()} GW. All rights reserved.</span>
+          </footer>
+        ) : (
+          <footer></footer>
+        )}
       </section>
     );
   }
