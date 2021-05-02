@@ -30,7 +30,7 @@ function Movie({ id, title, summary, poster, year, rating, genres }) {
         state: { id, title, summary, poster, year, rating, genres },
       }}
     >
-      <div className="movie">
+      <div className="movie movie__item">
         {/* App.js에서 보낸 데이터들을 받아서 JSX로 화면에 뿌려줌 */}
         {/* <h1>Movie</h1> */}
         <img src={poster} alt={title} title={title} />

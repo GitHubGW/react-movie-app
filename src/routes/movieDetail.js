@@ -1,4 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import Navigation from "../components/Navigation";
+import "./Home.css";
+import "./movieDetail.css";
+import "../components/Movie.css";
+import "../components/Navigation.css";
 
 // 기본적으로 라우터 안에 있는(ex HashRouter, BrowserRouter 등등) 모든 라우트들은(Home, About, movieDetail) props를 가지게 된다. (Route가 아닌 Navigation은 props를 가지지 않는다.)
 // react-router에 의해서 props를 가질 수 있는 것이고 props에는 아래와 같은 기본정보가 담겨있다.
@@ -20,16 +26,42 @@ class movieDetail extends React.Component {
   render() {
     const { location } = this.props;
     // console.log(this.props);
-
-    // console.log("✅location:", location);
+    console.log("✅location:", location);
 
     // 만약 location.state가 존재하면 location.state안에 있는 값들을 가져와서 화면에 보여주고 없다면 null을 리턴한다.
     if (location.state) {
       return (
-        <div>
-          <h1>movieDetail2</h1>
-          <h2>{location.state.title}</h2>
-        </div>
+        <section className="container">
+          <header className="header">
+            <Link to="/">
+              <h1>🎬 Movie</h1>
+            </Link>
+            <Navigation></Navigation>
+          </header>
+          <div className="movies movieDetail__container">
+            <div className="movie">
+              <img src={location.state.poster} alt={location.state.title} title={location.state.title} />
+              <div className="movie__data">
+                <h3 className="movie__title">{location.state.title}</h3>
+                <h3 className="movie__year">({location.state.year})</h3>
+                <ul className="movie__genres">
+                  {location.state.genres.map((genres, index) => {
+                    return (
+                      <li key={index} className="movie__genres__list">
+                        {genres}
+                      </li>
+                    );
+                  })}
+                </ul>
+                <h3 className="movie__rating">
+                  <i className="fas fa-star"></i>
+                  {location.state.rating === 0 ? "None" : location.state.rating} / 10.0
+                </h3>
+                <h3 className="movie__summary">{location.state.summary.slice(0, 300)}...</h3>
+              </div>
+            </div>
+          </div>
+        </section>
       );
     } else {
       return null;

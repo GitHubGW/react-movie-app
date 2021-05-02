@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import Movie from "../components/Movie";
 import "./Home.css";
 import "../components/Movie.css";
@@ -65,9 +66,16 @@ class Home extends React.Component {
 
     return (
       <section className="container">
-        {isLoading === false ? <Navigation></Navigation> : ""}
-
-        {isLoading === false ? <h1>🎬 Movie App 🎬</h1> : <h1></h1>}
+        {isLoading === false ? (
+          <header className="header">
+            <Link to="/">
+              <h1>🎬 Movie</h1>
+            </Link>
+            <Navigation></Navigation>
+          </header>
+        ) : (
+          <header></header>
+        )}
         {/* <h1>App</h1> */}
         {/* {}안에는 자바스크립트를 쓸 수 있고 자바스크립트의 삼항연산자를 이용해 조건문을 만들어줬다.  */}
         {/* isLoading이 true인지 false인지 검사해서 true면 "Loading.."을 false면 movies에 map()메서드를 돌린 결과를 가져온다. */}

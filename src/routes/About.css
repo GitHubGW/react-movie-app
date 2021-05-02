@@ -1,0 +1,15 @@
+.about__container{
+  border:3px solid red;
+}
+.about__container h3{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 30px;
+}
+.about__container h3 i{
+  margin: 0 6px;
+  color: red;
+  font-size: 24px;
+}

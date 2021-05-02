@@ -4,7 +4,7 @@
   align-items: flex-start;
   flex-wrap: wrap;
   padding: 20px;
-  padding-top: 40px;
+  padding-top: 90px;
   padding-bottom: 10px;
   width: 100%;
 }
@@ -14,9 +14,9 @@
 }
 .movies .movie {
   width: 23.5%;
-  height: 260px;
+  height: 265px;
   background-color: white;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   display: flex;
   font-weight: 300;
   padding: 20px;
@@ -27,7 +27,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.movies .movie:hover{
+.movies .movie.movie__item:hover{
   transform: scale(1.03);
 }
 .movie img {
@@ -64,6 +64,7 @@
   margin: 0;
   display: flex;
   margin-top: 15px;
+  white-space: nowrap;
 }
 .movie .movie__genres li{
   color: #adaeb9;
@@ -83,4 +84,14 @@
 }
 .movie .movie__summary{
   color: gray;
+}
+
+/* ##### Mobile ##### */
+@media (max-width: 768px){
+  .movies .movie{
+    width: 47%;
+    height: 250px;
+    padding: 10px;
+    margin-bottom: 40px;
+  }
 }
