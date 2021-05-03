@@ -12,13 +12,16 @@ import Navigation from "../components/Navigation";
 // 주소 가장 맨 끝에 Endpoint Parameters를 추가해서 그 파라미터에 따른 Json데이터를 가져올 수 있다.
 // 예를들어 json뒤에 ?sort_by=rating를 썼는데 이것은 rating(평점) 순으로 정렬하려고 써준 것이다.
 // rating대신 year나 다른 것들을 쓰면 그 속성에 따른 정렬 방식으로 json데이터를 기져오는 것이다.
-const URL = "https://yts-proxy.nomadcoders1.now.sh/list_movies.json?sort_by=genres";
+// const URL = "https://yts-proxy.nomadcoders1.now.sh/list_movies.json?sort_by=genres";
+const URL = "https://yts-proxy.nomadcoders1.now.sh/list_movies.json?sort_by=rating";
 
 class Home extends React.Component {
+  /*
   constructor() {
-    // console.log("constructor");
+    console.log("constructor");
     super();
   }
+  */
 
   state = {
     isLoading: true,

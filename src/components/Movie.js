@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import "./Movie";
+import "./Movie.css";
 
 // Movie컴포넌트가 받을 props에 대한 규칙을 설정해준다.
 Movie.propTypes = {
@@ -11,7 +11,7 @@ Movie.propTypes = {
   poster: PropTypes.string,
   year: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 // 만약 state를 사용한다면 class 컴포넌트를 만들어야 하지만(나중에 react hook을 배우면 꼭 클래스 컴포넌트가 없어도 됨) state를 사용하지 않는다면 굳이 class 컴포넌트를 만들 필요는 없다.
@@ -42,7 +42,10 @@ function Movie({ id, title, summary, poster, year, rating, genres }) {
           <ul className="movie__genres">
             {/* map에 있는 각각의 item은 key가 필요하다. 하지만 우리는 여기서 줄 키가 없다.  */}
             {/* map()메서드는 첫 번쨰 인자외에 두 번째 인자로 argument를 준다. argument에는 숫자가 들어간다.  */}
-            {genres.map((genres, index) => {
+            {console.log("✅ genres:",genres)}
+            {genres === undefined ? 
+            <li>None</li> : 
+            genres.map((genres, index) => {
               return (
                 <li key={index} className="movie__genres__list">
                   {genres}
