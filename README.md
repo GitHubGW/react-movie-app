@@ -15,8 +15,8 @@ https://githubgw.github.io/react-movie-app
 
 ## ✅ Packages
 - [x] React
-- [x] Axios
 - [x] React Router
+- [x] Axios
 - [x] GitHub Pages
 
 ## 📖 Theory
