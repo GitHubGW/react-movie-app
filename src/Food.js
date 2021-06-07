@@ -40,9 +40,10 @@
 //   );
 // }
 
-// // GetFood.propTypes{ }를 이용해서 가져올 props에 대한 규칙을 지정해준다. (propTypes는 이름 변경 불가함)
-// // 아래와 같이 규칙을 지정해주면 props에서 내가 원하는 props만 체크해서 가져올 수 있다.
+// // GetFood.propTypes{}를 이용해서 GetFood이 받는 props 데이터에 대한 규칙을 지정해준다. (propTypes는 이름 변경 불가함)
+// // 아래와 같이 규칙을 지정해주면 props에 내가 원하는 props만 체크해서 가져올 수 있다.
 // // 다양한 규칙을 체크할 수 있다. -> 값이 있는지 없는지, true인지 false인지, 타입은 어떤건지, 객체가 있는지 없는지 등등
+// 주의! GetFood.propTypes={}는 GetFood함수 뒤에 와야 한다.(앞에 오면 초기화하기 전이라 불러올 수 없다는 오류를 띄운다.)
 // GetFood.propTypes = {
 //   // 위에서 설치한 PropTypes모듈을 이용해서 foodList가 가지고 있는 객체들에게 규칙을 지정해준다.
 //   // PropTypes.string.isRequired: PropTypes모듈을 이용할 것이고 타입은 string을 받을 것이고 isRequired(값이 꼭 있도록) 할 것이다. (isRequired는 필수 옵션은 아님)
@@ -60,7 +61,7 @@
 //   // console.log(food);
 
 //   // React에서는 각각의 컴포넌트들은 유일해야 한다. (리액트 컴포넌트는 내부적으로 key prop가 필요함)
-//   // 그렇기 때문에 위에서 객체 생성시 서로 다른 id값을 주고 그 id값을 key라고 하는 props에 넣어서 보내줘서 컴포넌트들 각자를 유일하게 만들어준다.
+//   // 그렇기 때문에 위에서 객체 생성시 서로 다른 id값을 주고 그 id값을 key라고 하는 props에 넣어서 보내줘서 각각의 컴포넌트들을 유일하게 만들어준다.
 //   // 그냥 key prop에 유일한 값을 넣어서 보내주기만 하면 key prop가 없다는 오류는 뜨지 않는다.
 //   // key prop는 실제로 사용되진 않는다. 그냥 리액트 내부에서 사용하기 위함이다. (주의! key 이름은 바꾸면 안 됨)
 //   // return <GetFood key={food.id} foodName={food}/>
