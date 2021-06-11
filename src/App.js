@@ -12,12 +12,13 @@ import movieDetail from "./routes/movieDetail";
 // 함수형 컴포넌트 App을 생성함
 function App() {
   return (
-    // App은 HashRouter(해쉬 라우터)를 리턴한다. 그리고 HashRouter안에는 Route(라우트)가 있다. (라우터안에 라우트들이 있는 형태이다.)
-    // 라우트에는 라우트 경로로 갔을 때 보여줄 컴포넌트들을 지정해주면 된다.
+    // App은 HashRouter(해쉬 라우터)를 리턴한다. 그리고 HashRouter안에는 Route(라우트)가 있다.
+    // 라우터 안에 라우트 컴포넌트들이 있는 형태로 만들어줘야 한다.
+    // 라우트 컴포넌트에는 해당 라우트 경로로 갔을 때 보여줄 컴포넌트를 지정해주면 된다.
     <HashRouter>
-      {/* Navigation컴포넌트를 만들고 안에 라우트들간의 이동을 할 수 있는 Link를 만든다. */}
-      {/* 주의할 점은 Link는 라우터 밖에서 쓸 수 없다. Link는 라우터 안에 있어야 한다. */}
-      {/* (Navigation이 Link를 가지고 있기 때문에 여기서는 HashRouter밖으로 이동하면 사용 불가능하다는 의미이다.) */}
+      {/* Navigation컴포넌트를 만들고 네비게이션 컴포넌트 안에는 라우트들간의 이동을 할 때 사용하는 Link컴포넌트를 만든다. */}
+      {/* 주의할 점은 Link 컴포넌트는 라우터(ex: HashRouter, BrowserRouter 등) 밖에서 쓸 수 없다. Link컴포넌트는 라우터 안에 들어가야 한다. */}
+      {/* Navigation이 Link를 가지고 있기 때문에 여기서는 HashRouter밖에 네비게이션 컴포넌트를 배치하면 Link컴포넌트를 사용 할 수 없다. */}
       {/* <Navigation></Navigation> */}
 
       {/* Route에 몇몇 props(여기서는 속성)를 지정해줄 수 있다. */}
