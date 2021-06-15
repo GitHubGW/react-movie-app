@@ -18,9 +18,10 @@ class movieDetail extends React.Component {
     // console.log(history);
 
     // 만약 location.state가 undefined라면(location.state가 undefined면 state값이 없다는 의미) history가 가지고 있는 push()메서드를 이용해서 "/" 주소로 리다이렉트 시킨다.
+    // history가 가지고 있는 push()메서드를 이용해서 다른 컴포넌트로 이동시킬 수 있다.
+    // history.push({pathname: "/set_account", state: {userCell: userCell}}) 이런식으로 history.push()로 props를 넘겨줄 수도 있다.
     if (location.state === undefined) {
       history.push("/");
-    } else {
     }
   }
   render() {
@@ -40,7 +41,11 @@ class movieDetail extends React.Component {
           </header>
           <div className="movies movieDetail__container">
             <div className="movie">
-              <img src={location.state.poster} alt={location.state.title} title={location.state.title} />
+              <img
+                src={location.state.poster}
+                alt={location.state.title}
+                title={location.state.title}
+              />
               <div className="movie__data">
                 <h3 className="movie__title">{location.state.title}</h3>
                 <h3 className="movie__year">({location.state.year})</h3>
@@ -55,9 +60,14 @@ class movieDetail extends React.Component {
                 </ul>
                 <h3 className="movie__rating">
                   <i className="fas fa-star"></i>
-                  {location.state.rating === 0 ? "None" : location.state.rating} / 10.0
+                  {location.state.rating === 0
+                    ? "None"
+                    : location.state.rating}{" "}
+                  / 10.0
                 </h3>
-                <h3 className="movie__summary">{location.state.summary.slice(0, 300)}...</h3>
+                <h3 className="movie__summary">
+                  {location.state.summary.slice(0, 300)}...
+                </h3>
               </div>
             </div>
           </div>
