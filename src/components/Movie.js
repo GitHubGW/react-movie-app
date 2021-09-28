@@ -35,7 +35,6 @@ function Movie({ id, title, summary, poster, year, rating, genres }) {
     >
       <div className="movie movie__item">
         {/* App.js에서 보낸 데이터들을 받아서 JSX로 화면에 뿌려줌 */}
-        {/* <h1>Movie</h1> */}
         <img src={poster} alt={title} title={title} />
         <div className="movie__data">
           {/* 리액트에서 html안에서 자바스크립트를 쓰려면 {{}}로 묶어주고 안에 쓸 수 있다. (자주 쓰진 않지만 참고용으로 알아두기)  */}
